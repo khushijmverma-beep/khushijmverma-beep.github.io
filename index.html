@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khushi Verma</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f9f9f9; color: #222; transition: background 0.3s, color 0.3s; }
+
+    /* DARK MODE */
+    body.dark { background: #111; color: #eee; }
+    body.dark nav { background: #1a1a1a; }
+    body.dark nav a { color: #ccc; }
+    body.dark .hero { background: linear-gradient(135deg, #6c63ff22, #111); }
+    body.dark .card { background: #1a1a1a; border-color: #333; }
+    body.dark .about-section { background: #111; }
+    body.dark .projects-section { background: #161616; }
+    body.dark footer { background: #0a0a0a; }
+
+    /* NAV */
+    nav {
+      background: #fff;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo { font-weight: 700; font-size: 1.2rem; color: #6c63ff; }
+    nav a { text-decoration: none; color: #444; margin-left: 24px; font-size: 0.95rem; }
+    nav a:hover { color: #6c63ff; }
+    nav .right { display: flex; align-items: center; gap: 8px; }
+
+    /* DARK MODE TOGGLE */
+    .toggle-btn {
+      background: none;
+      border: 2px solid #6c63ff;
+      color: #6c63ff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 20px;
+      transition: all 0.2s;
+    }
+    .toggle-btn:hover { background: #6c63ff; color: white; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #6c63ff11, #f9f9f9);
+    }
+    .hero h1 { font-size: 3rem; font-weight: 800; }
+    .hero h1 span { color: #6c63ff; }
+    .hero p { margin-top: 16px; font-size: 1.1rem; color: #555; max-width: 500px; margin-inline: auto; }
+    body.dark .hero p { color: #aaa; }
+    .hero a {
+      display: inline-block;
+      margin-top: 28px;
+      background: #6c63ff;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .hero a:hover { background: #574fd6; }
+
+    /* ABOUT */
+    .about-section { padding: 80px 40px; }
+    .about-section p { color: #555; line-height: 1.8; font-size: 1.05rem; }
+    body.dark .about-section p { color: #aaa; }
+    .badge {
+      background: #6c63ff22;
+      color: #6c63ff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* PROJECTS */
+    .projects-section { padding: 80px 40px; background: #fff; }
+    .card {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 28px;
+      border: 1px solid #eee;
+    }
+    .card h3 { font-size: 1.1rem; font-weight: 700; }
+    .card p { color: #555; margin-top: 8px; font-size: 0.95rem; line-height: 1.7; }
+    body.dark .card p { color: #aaa; }
+    .tag {
+      background: #6c63ff22;
+      color: #6c63ff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    .card a { color: #6c63ff; font-size: 0.9rem; font-weight: 600; text-decoration: none; }
+
+    /* CONTACT */
+    .contact-section { padding: 80px 40px; text-align: center; }
+    .contact-section p { color: #555; font-size: 1.05rem; margin-bottom: 40px; }
+    body.dark .contact-section p { color: #aaa; }
+    .btn-email { background: #6c63ff; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+    .btn-github { background: #222; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+    .btn-phone { background: #f0f0f0; color: #222; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+    body.dark .btn-phone { background: #333; color: #eee; }
+
+    footer { text-align: center; padding: 24px; background: #222; color: #aaa; font-size: 0.85rem; }
+
+    .max-w { max-width: 800px; margin: auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .flex-wrap { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .flex-center { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Khushi Verma</div>
+    <div class="right">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button class="toggle-btn" onclick="toggleDark()">🌙 Dark</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Hi, I'm <span>Khushi</span> 👋</h1>
+    <p>Computer Science student at UT Dallas passionate about building software that makes a difference.</p>
+    <a href="#projects">View my work</a>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="max-w">
+      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 24px;">About Me</h2>
+      <p>I'm a first-year Computer Science student at UT Dallas with a strong foundation in Java, C++, and Python. I love building efficient, user-focused software and collaborating in team environments to solve real-world problems. I'm currently working on CritiqueAI, an AI-based feedback tool, as part of GDSC UTD.</p>
+      <div class="flex-wrap">
+        <span class="badge">Java</span>
+        <span class="badge">C++</span>
+        <span class="badge">Python</span>
+        <span class="badge">HTML/CSS</span>
+        <span class="badge">Git</span>
+        <span class="badge">Next.js</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section">
+    <div class="max-w">
+      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 40px;">Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>CritiqueAI</h3>
+          <p>AI-based assignment feedback tool built with Next.js and Firebase. Students upload assignments and get structured AI feedback.</p>
+          <div class="flex-wrap" style="margin-top: 16px;">
+            <span class="tag">Next.js</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">AI</span>
+          </div>
+          <a href="https://github.com/khushijmverma-beep" target="_blank" style="display:inline-block; margin-top: 20px;">View on GitHub →</a>
+        </div>
+        <div class="card">
+          <h3>GUI Desktop Applications</h3>
+          <p>Interactive games and apps built with Python (Tkinter) and Java with input validation, exception handling, and dynamic data display.</p>
+          <div class="flex-wrap" style="margin-top: 16px;">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">Tkinter</span>
+          </div>
+          <a href="https://github.com/khushijmverma-beep" target="_blank" style="display:inline-block; margin-top: 20px;">View on GitHub →</a>
+        </div>
+        <div class="card">
+          <h3>C++ Algorithms</h3>
+          <p>Collection of C++ projects including sorting algorithms, string manipulation, and the Lo-Shu Magic Square problem.</p>
+          <div class="flex-wrap" style="margin-top: 16px;">
+            <span class="tag">C++</span>
+            <span class="tag">Algorithms</span>
+          </div>
+          <a href="https://github.com/khushijmverma-beep" target="_blank" style="display:inline-block; margin-top: 20px;">View on GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="max-w">
+      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 16px;">Get In Touch</h2>
+      <p>I'm always open to new opportunities, collaborations, or just a chat!</p>
+      <div class="flex-center">
+        <a href="mailto:Khushi.jm.verma@gmail.com" class="btn-email">Email Me</a>
+        <a href="https://github.com/khushijmverma-beep" target="_blank" class="btn-github">GitHub</a>
+        <a href="tel:2149728480" class="btn-phone">214-972-8480</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 Khushi Verma · Built with HTML & CSS</footer>
+
+  <script>
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.toggle-btn');
+      if (document.body.classList.contains('dark')) {
+        btn.textContent = '☀️ Light';
+      } else {
+        btn.textContent = '🌙 Dark';
+      }
+    }
+  </script>
+
+</body>
+</html>
