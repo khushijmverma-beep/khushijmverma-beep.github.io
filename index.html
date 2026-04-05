@@ -6,119 +6,163 @@
   <title>Khushi Verma</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background: #f9f9f9; color: #222; transition: background 0.3s, color 0.3s; }
-
-    /* DARK MODE */
-    body.dark { background: #111; color: #eee; }
-    body.dark nav { background: #1a1a1a; }
-    body.dark nav a { color: #ccc; }
-    body.dark .hero { background: linear-gradient(135deg, #6c63ff22, #111); }
-    body.dark .card { background: #1a1a1a; border-color: #333; }
-    body.dark .about-section { background: #111; }
-    body.dark .projects-section { background: #161616; }
-    body.dark footer { background: #0a0a0a; }
+    body { font-family: 'Georgia', serif; background: #0d0d0d; color: #eee; }
 
     /* NAV */
     nav {
-      background: #fff;
-      padding: 16px 40px;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-bottom: 1px solid #333;
       position: sticky;
       top: 0;
+      background: #0d0d0d;
       z-index: 100;
     }
-    nav .logo { font-weight: 700; font-size: 1.2rem; color: #6c63ff; }
-    nav a { text-decoration: none; color: #444; margin-left: 24px; font-size: 0.95rem; }
-    nav a:hover { color: #6c63ff; }
-    nav .right { display: flex; align-items: center; gap: 8px; }
+    nav .logo { font-size: 1.2rem; color: #c9a96e; font-style: italic; font-weight: 700; }
+    nav a { text-decoration: none; color: #aaa; margin-left: 24px; font-size: 0.9rem; }
+    nav a:hover { color: #c9a96e; }
+    nav .right { display: flex; align-items: center; }
 
-    /* DARK MODE TOGGLE */
-    .toggle-btn {
-      background: none;
-      border: 2px solid #6c63ff;
-      color: #6c63ff;
-      padding: 6px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-left: 20px;
-      transition: all 0.2s;
-    }
-    .toggle-btn:hover { background: #6c63ff; color: white; }
-
-    /* HERO */
+    /* HERO LAYOUT UPDATE */
     .hero {
+      padding: 100px 40px;
+      border-bottom: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
       text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(135deg, #6c63ff11, #f9f9f9);
+      flex-wrap: wrap;
     }
-    .hero h1 { font-size: 3rem; font-weight: 800; }
-    .hero h1 span { color: #6c63ff; }
-    .hero p { margin-top: 16px; font-size: 1.1rem; color: #555; max-width: 500px; margin-inline: auto; }
-    body.dark .hero p { color: #aaa; }
-    .hero a {
+    
+    .hero-image {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #c9a96e;
+      box-shadow: 0 0 20px rgba(201, 169, 110, 0.2);
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h1 { font-size: 3.5rem; font-weight: 400; font-style: italic; letter-spacing: 4px; }
+    .hero h1 span { color: #c9a96e; }
+    .hero .subtitle { margin-top: 12px; color: #c9a96e; font-size: 0.95rem; letter-spacing: 2px; }
+    .hero p { margin-top: 16px; font-size: 1.05rem; color: #888; line-height: 1.8; }
+    
+    /* PRIMARY BUTTON */
+    .hero .cta-btn {
       display: inline-block;
-      margin-top: 28px;
-      background: #6c63ff;
-      color: white;
-      padding: 12px 28px;
-      border-radius: 8px;
+      margin-top: 40px;
+      border: 2px solid #c9a96e;
+      color: #c9a96e;
+      padding: 18px 45px;
+      border-radius: 2px;
       text-decoration: none;
-      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      transition: all 0.2s;
+      background: transparent;
+      text-transform: uppercase;
     }
-    .hero a:hover { background: #574fd6; }
+    .hero .cta-btn:hover { 
+      background: #c9a96e; 
+      color: #0d0d0d; 
+    }
+
+    /* SECONDARY BUTTONS */
+    .hero-links { 
+      margin-top: 50px; 
+      display: flex; 
+      justify-content: center; 
+      gap: 20px; 
+      flex-wrap: wrap; 
+    }
+    .hero-links a { 
+      display: inline-block;
+      border: 1px solid #c9a96e; 
+      color: #c9a96e; 
+      padding: 12px 30px;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hero-links a:hover { 
+      background: #c9a96e; 
+      color: #0d0d0d; 
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 40px; border-bottom: 1px solid #222; }
+    .max-w { max-width: 800px; margin: auto; }
+    h2 { font-size: 2rem; font-weight: 400; font-style: italic; color: #c9a96e; margin-bottom: 32px; }
 
     /* ABOUT */
-    .about-section { padding: 80px 40px; }
-    .about-section p { color: #555; line-height: 1.8; font-size: 1.05rem; }
-    body.dark .about-section p { color: #aaa; }
     .badge {
-      background: #6c63ff22;
-      color: #6c63ff;
+      background: #c9a96e11;
+      color: #c9a96e;
       padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
+      border: 1px solid #c9a96e33;
+      border-radius: 2px;
+      font-size: 0.85rem;
     }
+    .flex-wrap { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
     /* PROJECTS */
-    .projects-section { padding: 80px 40px; background: #fff; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
     .card {
-      background: #f9f9f9;
-      border-radius: 12px;
+      background: #111;
+      border-radius: 4px;
       padding: 28px;
-      border: 1px solid #eee;
+      border: 1px solid #222;
+      transition: border-color 0.2s;
     }
-    .card h3 { font-size: 1.1rem; font-weight: 700; }
-    .card p { color: #555; margin-top: 8px; font-size: 0.95rem; line-height: 1.7; }
-    body.dark .card p { color: #aaa; }
+    .card:hover { border-color: #c9a96e44; }
+    .card h3 { font-size: 1.1rem; font-weight: 400; font-style: italic; color: #c9a96e; }
+    .card .date { font-size: 0.8rem; color: #555; margin-top: 4px; }
+    .card p { color: #666; margin-top: 8px; font-size: 0.95rem; line-height: 1.7; }
     .tag {
-      background: #6c63ff22;
-      color: #6c63ff;
+      background: #c9a96e11;
+      color: #c9a96e;
       padding: 4px 12px;
-      border-radius: 20px;
+      border: 1px solid #c9a96e22;
+      border-radius: 2px;
       font-size: 0.8rem;
     }
-    .card a { color: #6c63ff; font-size: 0.9rem; font-weight: 600; text-decoration: none; }
+    .card a { color: #c9a96e; font-size: 0.9rem; text-decoration: none; border: none; padding: 0; margin-top: 20px; }
+    .card a:hover { text-decoration: underline; }
 
     /* CONTACT */
-    .contact-section { padding: 80px 40px; text-align: center; }
-    .contact-section p { color: #555; font-size: 1.05rem; margin-bottom: 40px; }
-    body.dark .contact-section p { color: #aaa; }
-    .btn-email { background: #6c63ff; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; }
-    .btn-github { background: #222; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; }
-    .btn-phone { background: #f0f0f0; color: #222; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; }
-    body.dark .btn-phone { background: #333; color: #eee; }
+    .contact-section { text-align: center; }
+    .flex-center { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; align-items: center; }
+    .btn-email, .btn-github, .btn-linkedin {
+      display: inline-block;
+      border: 1px solid #c9a96e;
+      color: #c9a96e;
+      padding: 12px 32px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      transition: all 0.2s;
+    }
+    .btn-email:hover, .btn-github:hover, .btn-linkedin:hover { background: #c9a96e; color: #0d0d0d; }
 
-    footer { text-align: center; padding: 24px; background: #222; color: #aaa; font-size: 0.85rem; }
+    footer { text-align: center; padding: 24px; color: #444; font-size: 0.85rem; border-top: 1px solid #222; }
 
-    .max-w { max-width: 800px; margin: auto; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .flex-wrap { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    .flex-center { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; padding: 60px 20px; }
+      .hero-image { width: 200px; height: 200px; }
+      .hero h1 { font-size: 2.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -128,64 +172,69 @@
     <div class="right">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
-      <button class="toggle-btn" onclick="toggleDark()">🌙 Dark</button>
+      <a href="art.html"> My Art Work </a>
     </div>
   </nav>
 
   <section class="hero">
-    <h1>Hi, I'm <span>Khushi</span> 👋</h1>
-    <p>Computer Science student at UT Dallas passionate about building software that makes a difference.</p>
-    <a href="#projects">View my work</a>
+    <img src="KhushiImage.jpg" alt="Khushi Verma" class="hero-image">
+    
+    <div class="hero-content">
+        <h1>Hi, I'm <span>Khushi!</span> </h1>
+        <p class="subtitle">Computer Science Student · UT Dallas</p>
+        <p>Building software that matters — from AI tools to open source contributions. Currently a freshman passionate about full-stack development and collaborative engineering.</p>
+        
+        <a href="#projects" class="cta-btn">View my work</a>
+
+        <div class="hero-links">
+          <a href="https://github.com/khushijmverma-beep" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/khushi-verma-36a377371" target="_blank">LinkedIn</a>
+        </div>
+    </div>
   </section>
 
   <section id="about" class="about-section">
     <div class="max-w">
-      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 24px;">About Me</h2>
-      <p>I'm a first-year Computer Science student at UT Dallas with a strong foundation in Java, C++, and Python. I love building efficient, user-focused software and collaborating in team environments to solve real-world problems. I'm currently working on CritiqueAI, an AI-based feedback tool, as part of GDSC UTD.</p>
+      <h2>About Me</h2>
+      <p>I'm a first-year CS student at UT Dallas with hands-on experience in full-stack development, version control, and open source contribution. I love building efficient, user-focused software and collaborating in team environments. Currently contributing to CritiqueAI as part of GDSC UTD and participating in WEHack 2026.</p>
       <div class="flex-wrap">
         <span class="badge">Java</span>
         <span class="badge">C++</span>
         <span class="badge">Python</span>
+        <span class="badge">JavaScript</span>
         <span class="badge">HTML/CSS</span>
-        <span class="badge">Git</span>
         <span class="badge">Next.js</span>
+        <span class="badge">Firebase</span>
+        <span class="badge">Git</span>
       </div>
     </div>
   </section>
 
-  <section id="projects" class="projects-section">
+  <section id="projects">
     <div class="max-w">
-      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 40px;">Projects</h2>
+      <h2>Projects</h2>
       <div class="grid">
         <div class="card">
+          <h3>WEHack 2026</h3>
+          <p class="date">April 2026</p>
+          <p>Women's hackathon at UTD — collaborating with a team to build and deliver a project while networking with corporate sponsors and technical mentors.</p>
+          <div class="flex-wrap" style="margin-top: 16px;">
+            <span class="tag">Hackathon</span>
+            <span class="tag">Teamwork</span>
+          </div>
+        </div>
+        <div class="card">
           <h3>CritiqueAI</h3>
-          <p>AI-based assignment feedback tool built with Next.js and Firebase. Students upload assignments and get structured AI feedback.</p>
+          <p class="date">Jan – May 2026 · GDSC UTD</p>
+          <p>AI-based assignment feedback tool. Contributing frontend pages including an assignment creation form and detail page built with Next.js and Firebase.</p>
           <div class="flex-wrap" style="margin-top: 16px;">
             <span class="tag">Next.js</span>
             <span class="tag">Firebase</span>
             <span class="tag">AI</span>
           </div>
-          <a href="https://github.com/khushijmverma-beep" target="_blank" style="display:inline-block; margin-top: 20px;">View on GitHub →</a>
-        </div>
-        <div class="card">
-          <h3>GUI Desktop Applications</h3>
-          <p>Interactive games and apps built with Python (Tkinter) and Java with input validation, exception handling, and dynamic data display.</p>
-          <div class="flex-wrap" style="margin-top: 16px;">
-            <span class="tag">Python</span>
-            <span class="tag">Java</span>
-            <span class="tag">Tkinter</span>
-          </div>
-          <a href="https://github.com/khushijmverma-beep" target="_blank" style="display:inline-block; margin-top: 20px;">View on GitHub →</a>
-        </div>
-        <div class="card">
-          <h3>C++ Algorithms</h3>
-          <p>Collection of C++ projects including sorting algorithms, string manipulation, and the Lo-Shu Magic Square problem.</p>
-          <div class="flex-wrap" style="margin-top: 16px;">
-            <span class="tag">C++</span>
-            <span class="tag">Algorithms</span>
-          </div>
-          <a href="https://github.com/khushijmverma-beep" target="_blank" style="display:inline-block; margin-top: 20px;">View on GitHub →</a>
+          <a href="https://github.com/khushijmverma-beep" target="_blank">View on GitHub →</a>
         </div>
       </div>
     </div>
@@ -193,29 +242,17 @@
 
   <section id="contact" class="contact-section">
     <div class="max-w">
-      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 16px;">Get In Touch</h2>
-      <p>I'm always open to new opportunities, collaborations, or just a chat!</p>
+      <h2>Get In Touch</h2>
+      <p style="color: #666; margin-bottom: 40px;">I'm always open to new opportunities, collaborations, or just a chat!</p>
       <div class="flex-center">
         <a href="mailto:Khushi.jm.verma@gmail.com" class="btn-email">Email Me</a>
         <a href="https://github.com/khushijmverma-beep" target="_blank" class="btn-github">GitHub</a>
-        <a href="tel:2149728480" class="btn-phone">214-972-8480</a>
+        <a href="https://linkedin.com/in/khushi-verma-36a377371" target="_blank" class="btn-linkedin">LinkedIn</a>
       </div>
     </div>
   </section>
 
-  <footer>© 2025 Khushi Verma · Built with HTML & CSS</footer>
-
-  <script>
-    function toggleDark() {
-      document.body.classList.toggle('dark');
-      const btn = document.querySelector('.toggle-btn');
-      if (document.body.classList.contains('dark')) {
-        btn.textContent = '☀️ Light';
-      } else {
-        btn.textContent = '🌙 Dark';
-      }
-    }
-  </script>
+  <footer>© 2026 Khushi Verma · Built with HTML & CSS</footer>
 
 </body>
 </html>
