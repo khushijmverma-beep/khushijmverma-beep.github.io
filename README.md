@@ -1,1 +1,1 @@
-https://khushijmverma-beep.github.io/#projects
+khushijmverma-beep.github.io
