@@ -3,243 +3,496 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Khushi Verma — Traditional and digital art portfolio. Falak Art Studio, VASE awards."/>
   <title>Art — Khushi Verma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #111111;
+      --gold: #c9a96e;
+      --gold-light: #e8d5a8;
+      --gold-dim: rgba(201, 169, 110, 0.15);
+      --gold-glow: rgba(201, 169, 110, 0.35);
+      --text: #eeeeee;
+      --text-muted: #888888;
+      --border: #222222;
+      --gradient-gold: linear-gradient(135deg, #c9a96e 0%, #e8d5a8 50%, #a8844a 100%);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Outfit', system-ui, sans-serif;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Georgia', serif;
-      background: #0d0d0d;
-      color: #eee;
-      min-height: 100vh;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
     }
 
     nav {
-      padding: 20px 40px;
+      padding: 16px clamp(20px, 5vw, 48px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
     }
-    nav .logo { font-size: 1.1rem; color: #c9a96e; font-style: italic; }
-    nav a { text-decoration: none; color: #aaa; font-size: 0.9rem; }
-    nav a:hover { color: #c9a96e; }
+    nav .logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--gold);
+      font-style: italic;
+    }
+    nav .nav-right { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      transition: color 0.25s;
+    }
+    nav a:hover { color: var(--gold); }
 
     .hero {
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: clamp(64px, 12vw, 100px) 20px 48px;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 100%;
+      background: radial-gradient(ellipse at center top, rgba(201, 169, 110, 0.07), transparent 70%);
+      pointer-events: none;
     }
     .hero h1 {
-      font-size: 3.5rem;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
       font-weight: 400;
       font-style: italic;
-      color: #c9a96e;
-      letter-spacing: 4px;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
     }
     .hero p {
       margin-top: 16px;
-      color: #888;
-      font-size: 1.05rem;
-      max-width: 500px;
+      color: var(--text-muted);
+      max-width: 560px;
       margin-inline: auto;
-      line-height: 1.8;
+      font-size: 1.05rem;
     }
+    .section-jump {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      padding: 12px 28px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--gradient-gold);
+      color: #0a0a0a;
+      box-shadow: 0 4px 20px var(--gold-glow);
+    }
+    .btn-outline {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+    .btn-outline:hover { background: var(--gold-dim); }
 
-    /* CAROUSEL */
-    .carousel-section {
-      padding: 40px 20px 80px;
+    .gallery-section {
+      padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 48px);
+      border-top: 1px solid var(--border);
+    }
+    .section-header {
+      max-width: 1100px;
+      margin: 0 auto 40px;
       text-align: center;
     }
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
 
-    .carousel-container {
+    /* Featured traditional trio */
+    .featured-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+    .featured-item {
       position: relative;
-      max-width: 700px;
-      margin: auto;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      aspect-ratio: 4/5;
+      transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+    }
+    .featured-item:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201, 169, 110, 0.5);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 24px var(--gold-dim);
+    }
+    .featured-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .featured-item:hover img { transform: scale(1.04); }
+    .featured-item .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      letter-spacing: 1px;
     }
 
-    .carousel-slide {
-      display: none;
-      animation: fadein 0.5s ease;
+    /* Masonry-style grid */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
-
-    .carousel-slide.active {
+    .art-grid .art-item {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      aspect-ratio: 1;
+      background: var(--bg-card);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .art-grid .art-item:hover {
+      transform: scale(1.02);
+      border-color: rgba(201, 169, 110, 0.4);
+      z-index: 2;
+    }
+    .art-grid .art-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
-    @keyframes fadein {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    /* Digital — wider cards */
+    .digital-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .digital-item {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.35s, box-shadow 0.35s;
+      background: var(--bg-card);
+    }
+    .digital-item::before {
+      content: '';
+      display: block;
+      height: 3px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transition: transform 0.35s;
+    }
+    .digital-item:hover::before { transform: scaleX(1); }
+    .digital-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .digital-item img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+    .digital-item span {
+      display: block;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 1px;
     }
 
-    .carousel-slide img {
-      width: 100%;
-      max-height: 600px;
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 90vh;
       object-fit: contain;
-      border: 1px solid #c9a96e33;
+      border: 1px solid rgba(201, 169, 110, 0.3);
       border-radius: 4px;
     }
-
-    .carousel-counter {
-      margin-top: 16px;
-      color: #666;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-    }
-
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 24px;
-      margin-top: 24px;
-    }
-
-    .carousel-btn {
-      background: transparent;
-      border: 1px solid #c9a96e;
-      color: #c9a96e;
-      padding: 10px 28px;
-      border-radius: 2px;
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 2rem;
       cursor: pointer;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      transition: all 0.2s;
-      font-family: 'Georgia', serif;
+      line-height: 1;
     }
-
-    .carousel-btn:hover {
-      background: #c9a96e;
-      color: #0d0d0d;
-    }
-
-    /* DOTS */
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(201, 169, 110, 0.1);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: #333;
       cursor: pointer;
+      font-size: 1.2rem;
       transition: background 0.2s;
     }
-
-    .dot.active { background: #c9a96e; }
+    .lightbox-nav:hover { background: var(--gold-dim); }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
 
     footer {
       text-align: center;
-      padding: 24px;
+      padding: 28px;
       color: #444;
       font-size: 0.85rem;
-      border-top: 1px solid #222;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
     }
-    footer a { color: #c9a96e; text-decoration: none; }
+    footer a { color: var(--gold); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .featured-row { grid-template-columns: 1fr; }
+      .featured-item { aspect-ratio: 3/4; max-height: 420px; }
+    }
   </style>
 </head>
 <body>
 
   <nav>
     <div class="logo">Khushi Verma — Art</div>
-    <a href="index.html">← Back to Portfolio</a>
+    <div class="nav-right">
+      <a href="#digital">Digital</a>
+      <a href="#traditional">Traditional</a>
+      <a href="index.html">← Portfolio</a>
+    </div>
   </nav>
 
-  <section class="hero">
+  <header class="hero">
     <h1>Art Portfolio</h1>
-    <p>A collection of creative works — illustrations, paintings, and visual explorations.</p>
-  </section>
+    <p>Digital illustrations and traditional works from Falak Art Studio — including VASE award submissions.</p>
+    <div class="section-jump">
+      <a href="#digital" class="btn btn-primary">Digital</a>
+      <a href="#traditional" class="btn btn-outline">Traditional</a>
+    </div>
+  </header>
 
-  <section class="carousel-section">
-    <div class="carousel-container">
+  <section id="digital" class="gallery-section">
+    <div class="section-header">
+      <p class="section-label">Digital</p>
+      <h2>Digital</h2>
+      <p>Digital illustrations and visual explorations</p>
+    </div>
 
-        <div class="carousel-slide active"><img src="Images/Image37.jpeg" alt="Artwork 37" /></div>
-        <div class="carousel-slide"><img src="Images/Image36.jpg" alt="Artwork 36" /></div>
-        <div class="carousel-slide"><img src="Images/Image35.jpg" alt="Artwork 35" /></div>
-        <div class="carousel-slide"><img src="Images/Image32.jpg" alt="Artwork 32" /></div>
-        <div class="carousel-slide"><img src="Images/Image31.jpg" alt="Artwork 31" /></div>
-        <div class="carousel-slide"><img src="Images/Image30.jpg" alt="Artwork 30" /></div>
-        <div class="carousel-slide"><img src="Images/Image29.jpg" alt="Artwork 29" /></div>
-        <div class="carousel-slide"><img src="Images/Image28.jpg" alt="Artwork 28" /></div>
-        <div class="carousel-slide"><img src="Images/Image27.jpg" alt="Artwork 27" /></div>
-        <div class="carousel-slide"><img src="Images/Image25.jpg" alt="Artwork 25" /></div>
-        <div class="carousel-slide"><img src="Images/Image20.jpg" alt="Artwork 20" /></div>
-        <div class="carousel-slide"><img src="Images/Image19.jpg" alt="Artwork 19" /></div>
-        <div class="carousel-slide"><img src="Images/Image18.jpg" alt="Artwork 18" /></div>
-        <div class="carousel-slide"><img src="Images/Image15.jpg" alt="Artwork 15" /></div>
-        <div class="carousel-slide"><img src="Images/Image14.jpg" alt="Artwork 14" /></div>
-        <div class="carousel-slide"><img src="Images/Image13.jpg" alt="Artwork 13" /></div>
-        <div class="carousel-slide"><img src="Images/Image12.jpg" alt="Artwork 12" /></div>
-        <div class="carousel-slide"><img src="Images/Image11.jpg" alt="Artwork 11" /></div>
-        <div class="carousel-slide"><img src="Images/Image10.jpg" alt="Artwork 10" /></div>
-        <div class="carousel-slide"><img src="Images/Image9.jpg" alt="Artwork 9" /></div>
-        <div class="carousel-slide"><img src="Images/Image8.jpg" alt="Artwork 8" /></div>
-        <div class="carousel-slide"><img src="Images/Image7.jpg" alt="Artwork 7" /></div>
-        <div class="carousel-slide"><img src="Images/Image6.jpg" alt="Artwork 6" /></div>
-        <div class="carousel-slide"><img src="Images/Image5.jpg" alt="Artwork 5" /></div>
-        <div class="carousel-slide"><img src="Images/Image4.jpg" alt="Artwork 4" /></div>
-        <div class="carousel-slide"><img src="Images/Image3.jpg" alt="Artwork 3" /></div>
-        <div class="carousel-slide"><img src="Images/Image2.jpg" alt="Artwork 2" /></div>
-        <div class="carousel-slide"><img src="Images/Image1.jpg" alt="Artwork 1" /></div>
-
-      <p class="carousel-counter" id="counter">1 / 28</p>
-
-      <div class="carousel-controls">
-        <button class="carousel-btn" onclick="changeSlide(-1)">← Prev</button>
-        <button class="carousel-btn" onclick="changeSlide(1)">Next →</button>
-      </div>
-
-      <div class="dots" id="dots"></div>
+    <div class="digital-grid">
+      <figure class="digital-item" data-lightbox>
+        <img src="digitalImages/one.png" alt="Digital art 1" loading="lazy">
+        <span>Piece I</span>
+      </figure>
+      <figure class="digital-item" data-lightbox>
+        <img src="digitalImages/two.png" alt="Digital art 2" loading="lazy">
+        <span>Piece II</span>
+      </figure>
+      <figure class="digital-item" data-lightbox>
+        <img src="digitalImages/three.png" alt="Digital art 3" loading="lazy">
+        <span>Piece III</span>
+      </figure>
+      <figure class="digital-item" data-lightbox>
+        <img src="digitalImages/four.png" alt="Digital art 4" loading="lazy">
+        <span>Piece IV</span>
+      </figure>
+      <figure class="digital-item" data-lightbox>
+        <img src="digitalImages/five.png" alt="Digital art 5" loading="lazy">
+        <span>Piece V</span>
+      </figure>
     </div>
   </section>
 
+  <section id="traditional" class="gallery-section">
+    <div class="section-header">
+      <p class="section-label">Hand-crafted</p>
+      <h2>Traditional</h2>
+      <p>Paintings and studio work from Coppell, TX · Jan 2022 – May 2025</p>
+    </div>
+
+    <div class="featured-row">
+      <figure class="featured-item" data-lightbox>
+        <img src="Images/image101.png" alt="Traditional artwork 101" loading="lazy">
+        <span class="caption">Featured · 101</span>
+      </figure>
+      <figure class="featured-item" data-lightbox>
+        <img src="Images/image102.png" alt="Traditional artwork 102" loading="lazy">
+        <span class="caption">Featured · 102</span>
+      </figure>
+      <figure class="featured-item" data-lightbox>
+        <img src="Images/image103.png" alt="Traditional artwork 103" loading="lazy">
+        <span class="caption">Featured · 103</span>
+      </figure>
+    </div>
+
+    <div class="art-grid" id="traditionalGrid">
+      <div class="art-item" data-lightbox><img src="Images/Image37.jpeg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image36.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image35.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image32.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image31.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image30.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image29.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image28.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image27.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image25.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image20.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image19.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image18.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image15.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image14.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image13.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image12.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image11.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image10.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image9.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image8.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image7.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image6.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image5.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image4.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image3.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image2.jpg" alt="Artwork" loading="lazy"></div>
+      <div class="art-item" data-lightbox><img src="Images/Image1.jpg" alt="Artwork" loading="lazy"></div>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
+    <img src="" alt="" id="lightboxImg">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">›</button>
+  </div>
+
   <footer>
-    © 2025 Khushi Verma · <a href="index.html">Back to main portfolio</a>
+    © 2026 Khushi Verma · <a href="index.html">Back to portfolio</a>
   </footer>
 
   <script>
-    let current = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const counter = document.getElementById('counter');
-    const dotsContainer = document.getElementById('dots');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const clickable = document.querySelectorAll('[data-lightbox]');
+    let allImages = [];
+    let currentIndex = 0;
 
-    // Create dots
-    slides.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (i === 0) dot.classList.add('active');
-      dot.onclick = () => goToSlide(i);
-      dotsContainer.appendChild(dot);
+    clickable.forEach(el => {
+      const img = el.querySelector('img');
+      if (img) {
+        allImages.push(img.src);
+        el.addEventListener('click', () => {
+          currentIndex = allImages.indexOf(img.src);
+          openLightbox(img.src);
+        });
+      }
     });
 
-    function updateCarousel() {
-      slides.forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
-      slides[current].classList.add('active');
-      document.querySelectorAll('.dot')[current].classList.add('active');
-      counter.textContent = `${current + 1} / ${slides.length}`;
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
 
-    function changeSlide(dir) {
-      current = (current + dir + slides.length) % slides.length;
-      updateCarousel();
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
     }
 
-    function goToSlide(i) {
-      current = i;
-      updateCarousel();
+    function showSlide(dir) {
+      currentIndex = (currentIndex + dir + allImages.length) % allImages.length;
+      lightboxImg.src = allImages[currentIndex];
     }
 
-    // Keyboard support
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrev').addEventListener('click', () => showSlide(-1));
+    document.getElementById('lightboxNext').addEventListener('click', () => showSlide(1));
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') changeSlide(-1);
-      if (e.key === 'ArrowRight') changeSlide(1);
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showSlide(-1);
+      if (e.key === 'ArrowRight') showSlide(1);
     });
   </script>
-
 </body>
 </html>
